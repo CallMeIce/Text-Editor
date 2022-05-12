@@ -22,7 +22,6 @@ module.exports = () => {
         template: './index.html',
         title: 'jate'
       }),
-      
     ],
 
     module: {
