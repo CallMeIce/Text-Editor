@@ -13,28 +13,15 @@ const initdb = async () =>
   });
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
-export const putDb = async (content) => console.error('putDb not implemented');
-
-// // Export a function we will use to POST to the database.
-// export const postDb = async (content) => {
-//   console.log('Post to the ase');
-
-//   // Create a connection to the database database and version we want to use.
-//   const todosDb = await openDB('todos', 1);
-
-//   // Create a new transaction and specify the database and data privileges.
-//   const tx = todosDb.transaction('todos', 'readwrite');
-
-//   // Open up the desired object store.
-//   const store = tx.objectStore('todos');
-
-//   // Use the .add() method on the store and pass in the content.
-//   const request = store.add({ todo: content });
-
-//   // Get confirmation of the request.
-//   const result = await request;
-//   console.log('🚀 - data saved to the database', result);
-// };
+export const putDb = async (id, content) => {
+  console.log('PUT to the database');
+  const jatesDb = await openDB('jates', 1);
+  const tx = jatesDb.transaction('jates', 'readwrite');
+  const store = tx.objectStore('jates');
+  const request = store.put({ id: id, jate: content });
+  const result = await request;
+  console.log('🚀 - data saved to the database', result);
+};
 
 // TODO: Add logic for a method that gets all the content from the database
 // Export a function we will use to GET all from the database.
@@ -69,16 +56,16 @@ initdb();
 //   console.log('Post to the ase');
 
 //   // Create a connection to the database database and version we want to use.
-//   const todosDb = await openDB('todos', 1);
+//   const jatesDb = await openDB('jates', 1);
 
 //   // Create a new transaction and specify the database and data privileges.
-//   const tx = todosDb.transaction('todos', 'readwrite');
+//   const tx = jatesDb.transaction('jates', 'readwrite');
 
 //   // Open up the desired object store.
-//   const store = tx.objectStore('todos');
+//   const store = tx.objectStore('jates');
 
 //   // Use the .add() method on the store and pass in the content.
-//   const request = store.add({ todo: content });
+//   const request = store.add({ jate: content });
 
 //   // Get confirmation of the request.
 //   const result = await request;
@@ -90,13 +77,13 @@ initdb();
 //   console.log('GET all from the database');
 
 //   // Create a connection to the database database and version we want to use.
-//   const todosDb = await openDB('todos', 1);
+//   const jatesDb = await openDB('jates', 1);
 
 //   // Create a new transaction and specify the database and data privileges.
-//   const tx = todosDb.transaction('todos', 'readonly');
+//   const tx = jatesDb.transaction('jates', 'readonly');
 
 //   // Open up the desired object store.
-//   const store = tx.objectStore('todos');
+//   const store = tx.objectStore('jates');
 
 //   // Use the .getAll() method to get all data in the database.
 //   const request = store.getAll();
@@ -112,13 +99,13 @@ initdb();
 //   console.log('GET from the database');
 
 //   // Create a connection to the database database and version we want to use.
-//   const todosDb = await openDB('todos', 1);
+//   const jatesDb = await openDB('jates', 1);
 
 //    // Create a new transaction and specify the database and data privileges.
-//   const tx = todosDb.transaction('todos', 'readonly');
+//   const tx = jatesDb.transaction('jates', 'readonly');
 
 //   // Open up the desired object store.
-//   const store = tx.objectStore('todos');
+//   const store = tx.objectStore('jates');
 
 //    // Use the .get() method to get a piece of data from the database based on the id.
 //   const request = store.get(id);
